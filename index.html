@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FriendTrip</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- 引入Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <!-- 引入Font Awesome CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  </head>
+  <style>
+    /* 重置樣式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 全域樣式 */
+    body {
+      font-family: Arial, sans-serif;
+      color: #333;
+      background-color: #dfd9e8;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    header {
+      background-color: #b198d6;
+      padding: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin: 0;
+      color: #000;
+    }
+
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+
+    .user-profile {
+      padding: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin: 0;
+      color: #000;
+    }
+
+    .chat-room {
+      padding: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .tabs {
+  text-align: center; /* Center align the content */
+}
+
+.tabs ul {
+  display: inline-block; /* Display the list items inline */
+}
+
+    .tabs ul li {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .tabs ul li a {
+      padding: 10px;
+      /* border: 1px solid #a30000; */
+      background-color: #b198d6;
+      border-radius: 5px;
+      color: #000;
+    }
+
+    .tabs ul li a:hover {
+      background-color: #f7f7f7;
+    }
+
+    .main-content {
+      padding: 20px;
+    }
+
+    .featured {
+  margin-bottom: 20px;
+  text-align: center; /* Center the content horizontally */
+}
+
+.featured ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto; /* Center the list horizontally */
+  display: flex;
+  justify-content: center; /* Center the items horizontally */
+}
+
+.featured ul li {
+  margin-right: 10px;
+}
+
+.featured ul li:last-child {
+  margin-right: 0;
+}
+
+.featured ul li a {
+  display: block;
+  width: 200px;
+  height: 200px;
+  background-color: #ddd;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.featured ul li a img {
+  width: 100%;
+  height: 100%;
+}
+
+.featured ul li a span {
+  display: block;
+  margin-top: 10px;
+  font-size: 16px;
+  color: #000;
+}
+
+
+    .sections {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .dating {
+      width: 50%;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .dating h2 {
+      font-size: 18px;
+      margin: 0;
+      color: #000;
+    }
+
+    .dating p {
+      margin-bottom: 10px;
+      color: #000;
+    }
+
+    .dating a {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      color: #000;
+    }
+
+  /* Modify official section */
+.official {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #ddd;
+  margin-top: 40px;
+  border-radius: 5px;
+  text-align: center; /* Center the content horizontally */
+}
+
+.official h2 {
+  font-size: 18px;
+  margin: 0 0 20px; /* Add margin at the bottom for spacing */
+  color: #000;
+}
+
+.official ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto; /* Center the list horizontally */
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap */
+  justify-content: center; /* Center the items horizontally */
+}
+
+.official ul li {
+  width: calc(33.33% - 20px); /* Set width for each item */
+  margin-bottom: 20px;
+}
+
+.official ul li a {
+  display: block;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  color: #000;
+  text-decoration: none;
+}
+
+.official ul li a:hover {
+  background-color: #f7f7f7;
+}
+
+.official ul li img {
+  width: 100%;
+  height: 200px; /* Set a fixed height for the images */
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+  border-radius: 5px;
+}
+
+.official ul li h3 {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+
+    header img {
+      width: 100%;
+    }
+    /* 行程選單 */
+  </style>
+  <body>
+    <div class="container">
+      <header>
+        <img src="img/logo.png" alt="" />
+      </header>
+
+      <main>
+        <section class="user-profile text-center">
+          <h1>認識理想中的他與她!</ˋ>
+          <!-- <a href="#">抽好友這裡去→</a> -->
+        </section>
+
+        <section class="tabs">
+          <ul>
+            <li>
+              <a
+href="file:///C:/Users/%E6%9B%B9%E7%A5%90%E5%98%89/OneDrive/%E6%A1%8C%E9%9D%A2/%E6%9B%B9%E7%A5%90%E5%98%89%E4%BD%9C%E5%93%81%E9%9B%86/2.%E4%BA%A4%E5%8F%8B%E6%97%85%E9%81%8A%E7%B6%B2%E7%AB%99(Friend-Trip)/Friend-Trip(%E4%BA%A4%E5%8F%8B%E6%97%85%E9%81%8A%E7%B6%B2%E7%AB%99).html"
+                >固定行程</a
+              ></li>
+            <li><a href="#">自定行程</a></li>
+            <li><a href="#">首選規畫師</a></li>
+            <li><a href="#">景點介紹</a></li>
+            <li><a href="#">文章</a></li>
+            <li><a href="#">購物</a></li>
+            <li><a href="#">聊天室</a></li>
+            <li><a href="#">反饋</a></li>
+            <li><a href="#">常見問題</a></li>
+            <li><a href="#">部落格</a></li>
+          </ul>
+        </section>
+        <section class="main-content">
+          <!-- <div class="featured">
+            <h2>建立專屬</h2>
+            <ul>
+              <li>
+                <a href="#">
+                  <img src="img/20.jpg" alt="熱門" />
+                  <span>熱門</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="img/14.jpg" alt="收藏" />
+                  <span>收藏</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="img/11.jpg" alt="最新" />
+                  <span>最新</span>
+                </a>
+              </li>
+            </ul>
+          </div> -->
+          <section class="official">
+            <h2>建立專屬</h2>
+            <ul>
+              <li>
+                <a href="#">
+                  <img src="img/20.jpg" alt="" />
+                  <h3>熱門</h3>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="img/14.jpg" alt="" />
+                  <h3>收藏</h3>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <img src="img/11.jpg" alt="" />
+                  <h3>最新</h3>
+                </a>
+              </li>
+            </ul>
+          </section>
+            <section class="official">
+              <h2>官方推薦行程</h2>
+              <ul>
+                <li>
+                  <a href="#">
+                    <img src="img/15.jpg" alt="" />
+                    <h3>安排專屬的私人行程。取約吧...</h3>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/16.jpg" alt="" />
+                    <h3>想和新朋友來個一對一約會?</h3>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img src="img/17.jpg" alt="" />
+                    <h3>安排專屬的私人行程,約吧...</h3>
+                  </a>
+                </li>
+              </ul>
+            </section>
+          </div>
+        </section>
+      </main>
+      <footer>
+        <p>Copyright © 2024 FriendTrip</p>
+      </footer>
+    </div>
+  </body>
+</html>
